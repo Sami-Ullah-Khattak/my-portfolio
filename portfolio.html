@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sami Ullah Khattak — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0e0e;
+    --dim: #555;
+    --line: #d8d8d8;
+    --accent: #1a3c6e;
+    --bg: #fafaf8;
+    --card: #f2f1ee;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ── LAYOUT ── */
+  .page { max-width: 860px; margin: 0 auto; padding: 48px 32px; }
+
+  /* ── HEADER ── */
+  header { border-bottom: 2px solid var(--ink); padding-bottom: 24px; margin-bottom: 36px; }
+  header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 42px;
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+  header .role {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 8px 0 16px;
+  }
+  .links { display: flex; flex-wrap: wrap; gap: 16px; }
+  .links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--dim);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 1px;
+    transition: color .2s, border-color .2s;
+  }
+  .links a:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* ── SECTIONS ── */
+  section { margin-bottom: 40px; }
+  h2 {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+
+  /* ── ABOUT ── */
+  .about p {
+    font-size: 15px;
+    color: var(--ink);
+    max-width: 640px;
+    line-height: 1.75;
+  }
+
+  /* ── SKILLS GRID ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+  }
+  .skill-cat h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .skill-cat ul { list-style: none; }
+  .skill-cat li {
+    font-size: 13px;
+    padding: 2px 0;
+    color: var(--ink);
+    border-bottom: 1px dotted var(--line);
+  }
+
+  /* ── ODOO MODULES ── */
+  .modules-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .module-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 16px 18px;
+    border-left: 3px solid var(--accent);
+  }
+  .module-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+  .module-card p { font-size: 12.5px; color: var(--dim); line-height: 1.55; }
+
+  /* ── SERVICES ── */
+  .services-list { display: flex; flex-direction: column; gap: 10px; }
+  .service-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 16px;
+    background: var(--card);
+    border: 1px solid var(--line);
+  }
+  .svc-icon {
+    font-family: 'DM Mono', monospace;
+    font-size: 18px;
+    color: var(--accent);
+    width: 28px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .service-item h3 { font-size: 13.5px; font-weight: 500; margin-bottom: 2px; }
+  .service-item p { font-size: 12px; color: var(--dim); }
+
+  /* ── EXPERIENCE ── */
+  .exp-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .exp-row:last-child { border-bottom: none; }
+  .exp-left .company { font-weight: 500; font-size: 14px; }
+  .exp-left .title { font-size: 12px; color: var(--dim); }
+  .exp-right {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--dim);
+    text-align: right;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 2px solid var(--ink);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer span { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--dim); }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: #fff; font-size: 12px; }
+    .page { padding: 20px 20px; }
+    header h1 { font-size: 32px; }
+    .modules-grid { grid-template-columns: 1fr 1fr; }
+    a { color: inherit !important; }
+    section { page-break-inside: avoid; margin-bottom: 28px; }
+  }
+
+  @media (max-width: 560px) {
+    .modules-grid { grid-template-columns: 1fr; }
+    header h1 { font-size: 30px; }
+  }
+
+  /* ── FADE-IN ── */
+  .fade { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+  .fade.show { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="fade">
+    <h1>Sami Ullah<br>Khattak</h1>
+    <p class="role">Full-Stack Developer · Odoo Specialist · UI/UX</p>
+    <div class="links">
+      <a href="mailto:sami@example.com">✉ Contact</a>
+      <a href="https://www.linkedin.com/in/sami-ullah-khattak-3a400625a/" target="_blank">↗ LinkedIn</a>
+      <a href="https://github.com/Sami-Ullah-Khattak" target="_blank">↗ GitHub</a>
+      <a href="https://developers.google.com/profile/u/samiu" target="_blank">↗ Google Dev</a>
+      <a href="https://www.instagram.com/samiiktk/" target="_blank">↗ Instagram</a>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section class="about fade">
+    <h2>About</h2>
+    <p>Full-Stack Developer at eAlam Group, Islamabad — specialising in modern web and mobile solutions with React.js, React Native, and Odoo ERP. I build integrations that connect businesses to the tools they rely on: payment gateways, cloud storage, and CRM platforms. Strong focus on clean UI/UX and maintainable architecture.</p>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="fade">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-cat">
+        <h3>Frontend</h3>
+        <ul>
+          <li>React.js</li>
+          <li>React Native</li>
+          <li>HTML5 / CSS3</li>
+          <li>JavaScript (ES6+)</li>
+          <li>UI/UX Design</li>
+        </ul>
+      </div>
+      <div class="skill-cat">
+        <h3>Backend</h3>
+        <ul>
+          <li>Python</li>
+          <li>Odoo (ORM, RPC)</li>
+          <li>REST APIs</li>
+          <li>PostgreSQL</li>
+          <li>XML / QWeb</li>
+        </ul>
+      </div>
+      <div class="skill-cat">
+        <h3>Integrations</h3>
+        <ul>
+          <li>Stripe API</li>
+          <li>Salesforce API</li>
+          <li>MinIO S3</li>
+          <li>Webhooks</li>
+          <li>OAuth 2.0</li>
+        </ul>
+      </div>
+      <div class="skill-cat">
+        <h3>Tools & Other</h3>
+        <ul>
+          <li>Flutter / Dart</li>
+          <li>Git / GitHub</li>
+          <li>Firebase</li>
+          <li>Docker basics</li>
+          <li>Linux / CLI</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ODOO MODULES -->
+  <section class="fade">
+    <h2>Odoo Modules Built</h2>
+    <div class="modules-grid">
+      <div class="module-card">
+        <h3>DB Provisioner</h3>
+        <p>Automates Odoo database provisioning — spin up and configure new instances without manual setup.</p>
+      </div>
+      <div class="module-card">
+        <h3>Stripe Webhook</h3>
+        <p>Connects Odoo with Stripe for real-time payment events, syncing invoices, subscriptions and refunds.</p>
+      </div>
+      <div class="module-card">
+        <h3>Salesforce Connector</h3>
+        <p>Bi-directional sync of accounts and contacts between Odoo and Salesforce. Applies Salesforce discounts directly to Odoo orders.</p>
+      </div>
+      <div class="module-card">
+        <h3>MinIO Connector</h3>
+        <p>Replaces Odoo's default file store with MinIO — all attachments and data assets are stored and synced in S3-compatible object storage.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="fade">
+    <h2>Services Offered</h2>
+    <div class="services-list">
+      <div class="service-item">
+        <div class="svc-icon">⚙</div>
+        <div>
+          <h3>Custom Odoo Module Development</h3>
+          <p>Bespoke modules tailored to your business logic — from simple field extensions to complex third-party integrations.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="svc-icon">🔗</div>
+        <div>
+          <h3>API & Webhook Integrations</h3>
+          <p>Connect Odoo to payment gateways, CRMs, cloud storage, and external platforms via REST / webhook architectures.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="svc-icon">📱</div>
+        <div>
+          <h3>Web & Mobile App Development</h3>
+          <p>React.js web apps and React Native mobile apps with polished UI/UX — from MVP to production.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="svc-icon">🗄</div>
+        <div>
+          <h3>Odoo Setup & Consultation</h3>
+          <p>Database provisioning, module installation, configuration and ongoing technical support for Odoo deployments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="fade">
+    <h2>Experience</h2>
+    <div class="exp-row">
+      <div class="exp-left">
+        <div class="company">eAlam Group</div>
+        <div class="title">Full-Stack Developer · Odoo Specialist</div>
+      </div>
+      <div class="exp-right">Islamabad, PK<br>Current</div>
+    </div>
+    <div class="exp-row">
+      <div class="exp-left">
+        <div class="company">Open Source / Personal Projects</div>
+        <div class="title">Flutter App · MinIO Odoo Connector</div>
+      </div>
+      <div class="exp-right">GitHub<br>Ongoing</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="fade">
+    <span>Sami Ullah Khattak · Islamabad, Pakistan</span>
+    <span id="yr"></span>
+  </footer>
+
+</div>
+
+<script>
+  // Year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Fade-in on scroll
+  const els = document.querySelectorAll('.fade');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  els.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
